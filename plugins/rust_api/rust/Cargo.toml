@@ -39,7 +39,9 @@ windows-sys = { version = "0.61", features = [
 opt-level = "s"
 lto = true
 codegen-units = 1
-strip = true
+# Explicit `none`: this toolchain's objcopy-based stripping (the release default
+# is `debuginfo`) misaligns __LINKEDIT, which macOS 27's dyld rejects.
+strip = "none"
 panic = "abort"
 
 [profile.dev]
