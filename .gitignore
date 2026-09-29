@@ -45,6 +45,9 @@ app.*.map.json
 .claude/settings.local.json
 .claude/worktrees/
 
+# WorkBuddy local workspace (personal memory, not shared)
+.workbuddy/
+
 # Documentation (generated/planning artifacts)
 docs/
 
@@ -67,6 +70,11 @@ docs/
 /services/helper/target
 /macos/**/Package.resolved
 /macos/build/
+# CocoaPods residue: upstream dropped the macOS CocoaPods integration in c0fcbc0,
+# but `flutter build macos` regenerates these and would otherwise dirty the tree.
+/macos/Podfile
+/macos/Podfile.lock
+/macos/Pods/
 /env.json
 /core_sha256.json
 /plugins/rust_api/.claude/
