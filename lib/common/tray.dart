@@ -14,6 +14,10 @@ import 'system.dart';
 import 'window.dart';
 
 class AppTray implements TrayPort {
+  /// Tray glyphs are full-bleed; macOS status bar is ~22pt tall.
+  static const int _macOSIconSize = 14;
+  static const int _defaultIconSize = 18;
+
   static AppTray? _instance;
 
   final bool isMacOS;
@@ -79,6 +83,7 @@ class AppTray implements TrayPort {
             tunEnable: trayState.tunEnable,
           ),
           isTemplate: isMacOS,
+          size: isMacOS ? _macOSIconSize : _defaultIconSize,
         ),
         toolTip: appName,
         menu: _buildMenu(trayState: trayState, read: read),
